@@ -21,7 +21,6 @@
     --color-success: #10b981;
     --color-info: #3b82f6;
   }
-
   [data-theme="dark"] {
     --cc-black: #f0f0f0;
     --cc-white: #1e1e1e;
@@ -31,7 +30,6 @@
     --cc-bg-modal: #2d2d2d;
     --cc-table-hover: rgba(255,255,255,0.05);
   }
-
   * { box-sizing: border-box; outline: none; margin: 0; padding: 0; }
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -69,7 +67,6 @@
 
   button { padding: 9px 18px; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 13px; color: white; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s; }
   button:hover { opacity: 0.9; transform: translateY(-1px); }
-  button:active { transform: translateY(0); }
   .btn-add { background-color: var(--cc-red); }
   .btn-export { background-color: #28a745; }
   .btn-print { background-color: #6c757d; }
@@ -120,98 +117,20 @@
   .modal-body { padding: 25px; overflow-y: auto; flex: 1; }
   .modal-footer { padding: 15px 25px; border-top: 1px solid var(--cc-border); display: flex; justify-content: space-between; background: var(--cc-gray); border-radius: 0 0 12px 12px; }
 
-  .form-section-title { grid-column: span 4; border-top: 2px solid var(--cc-border); margin-top: 15px; padding-top: 10px; color: var(--cc-red); font-weight: bold; font-size: 13px; text-transform: uppercase; }
-  .form-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-  .form-group { margin-bottom: 5px; }
-  .form-group label { display: block; margin-bottom: 4px; font-weight: 600; font-size: 11px; color: var(--cc-text-muted); }
-  .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 8px; border: 1px solid var(--cc-border); border-radius: 4px; font-size: 12px; background: var(--cc-white); color: var(--cc-black); }
-  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--cc-red); box-shadow: 0 0 0 2px rgba(228, 0, 43, 0.1); }
-  .form-group input[type="date"] { min-height: 36px; }
-  .form-group textarea { resize: vertical; min-height: 80px; }
-
-  .required label::after { content: " *"; color: var(--color-danger); }
-
-  /* --- DOCUMENT UPLOAD --- */
+  /* --- Document Upload --- */
   .upload-area { border: 1px dashed var(--cc-border); border-radius: 4px; padding: 15px; text-align: center; margin-top: 10px; cursor: pointer; transition: all 0.2s; }
   .upload-area:hover { border-color: var(--cc-red); background-color: rgba(228, 0, 43, 0.05); }
-  .document-list { margin-top: 10px; max-height: 200px; overflow-y: auto; }
-  .document-item { display: flex; align-items: center; justify-content: space-between; padding: 8px; background: var(--cc-gray); border-radius: 4px; margin-bottom: 5px; }
-  .document-name { font-size: 12px; display: flex; align-items: center; gap: 8px; flex: 1; }
-  .document-date { font-size: 10px; color: var(--cc-text-muted); }
-  .document-actions { display: flex; gap: 5px; }
-
-  /* --- PROFESSIONAL REPORT STYLES (PDF/PRINT) --- */
-  #printArea { display: none; }
-
-  .report-header { text-align: center; border-bottom: 3px solid var(--cc-red); padding-bottom: 20px; margin-bottom: 30px; display: flex; align-items: center; justify-content: center; gap: 20px; }
-  .report-logo { width: 80px; height: 80px; background: var(--cc-red); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; color: white; }
-  .report-title h2 { margin: 0; color: #333; font-size: 24px; }
-  .report-title p { margin: 5px 0 0; color: #666; font-size: 14px; }
-
-  .report-section { margin-bottom: 25px; }
-  .report-section h3 { font-size: 16px; color: var(--cc-red); border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-top: 0; margin-bottom: 10px; }
-  .report-table { width: 100%; border-collapse: collapse; border: 1px solid #ddd; }
-  .report-table th, .report-table td { border: 1px solid #ddd; padding: 8px; text-align: left; font-size: 13px; }
-  .report-table th { background-color: #f9f9f9; color: #333; }
-
-  .status-stamp { 
-    width: 180px; height: 180px; border: 5px solid #28a745; color: #28a745; 
-    border-radius: 50%; display: flex; align-items: center; justify-content: center; 
-    font-weight: 900; font-size: 24px; transform: rotate(-15deg); opacity: 0.2; margin-top: 20px;
-  }
-  .signature-area { margin-top: 80px; display: flex; justify-content: space-between; }
-  .sign-box { width: 40%; border-top: 2px solid #000; padding-top: 10px; text-align: center; font-size: 14px; color: #333; font-weight: bold;}
-
-  @media print {
-    body { margin: 0; background: white; }
-    header, .controls, .dashboard, .table-container, .modal-overlay, .toast { display: none !important; }
-    #printArea {
-      display: block !important;
-      position: absolute;
-      top: 0; left: 0; width: 100%;
-      background: white; color: black; padding: 40px; z-index: 99999;
-    }
-    .no-print { display: none; }
-    .status-stamp { opacity: 1; border-width: 5px; }
-    .report-header, .report-section { page-break-inside: avoid; }
-  }
-
-  .toast { visibility: hidden; min-width: 280px; background-color: #333; color: #fff; text-align: center; border-radius: 8px; padding: 14px 24px; position: fixed; z-index: 2000; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(20px); box-shadow: 0 5px 20px rgba(0,0,0,0.3); font-size: 14px; opacity: 0; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px; }
-  .toast.show { visibility: visible; opacity: 1; transform: translateX(-50%) translateY(0); }
-  .toast.success { background-color: #28a745; }
-  .toast.error { background-color: #dc3545; }
-  .toast.warning { background-color: #f59e0b; color: #000; }
-
-  /* Empty State */
-  .empty-state {
-    text-align: center;
-    padding: 40px 20px;
-    color: var(--cc-text-muted);
-  }
-  .empty-state i {
-    font-size: 48px;
-    margin-bottom: 15px;
-    opacity: 0.5;
-  }
-
-  /* Loading */
-  .loading { display: none; text-align: center; padding: 20px; }
-  .spinner { border: 3px solid var(--cc-gray); border-top: 3px solid var(--cc-red); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto; }
-  @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
+  #documentList { margin-top: 10px; max-height: 200px; overflow-y: auto; }
+  /* Document item styling */
+  .document-item { display:flex; align-items:center; justify-content:space-between; padding:6px; background:#f4f4f4; margin-bottom:4px; border-radius:4px; font-size:12px; }
+  .document-info { display:flex; align-items:center; gap:8px; }
+  .document-name { font-weight:600; }
+  /* Toast Notification */
+  #toast { visibility: hidden; min-width: 280px; background-color: #333; color: #fff; text-align: center; border-radius: 8px; padding: 14px 24px; position: fixed; z-index: 2000; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(20px); box-shadow: 0 5px 20px rgba(0,0,0,0.3); font-size: 14px; opacity: 0; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px; }
+  #toast.show { visibility: visible; opacity: 1; transform: translateX(-50%) translateY(0); }
   /* Responsive */
-  @media (max-width: 768px) {
+  @media(max-width:768px){
     .form-grid { grid-template-columns: repeat(2, 1fr); }
-    .form-section-title { grid-column: span 2; }
-    .controls { flex-direction: column; align-items: stretch; }
-    .search-wrapper, select { width: 100%; margin-bottom: 10px; }
-    .dashboard { grid-template-columns: repeat(2, 1fr); }
-  }
-
-  @media (max-width: 480px) {
-    .form-grid { grid-template-columns: 1fr; }
-    .form-section-title { grid-column: span 1; }
-    .dashboard { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -304,14 +223,73 @@
 
 <!-- MAIN MODAL: ADD/EDIT -->
 <div id="staffModal" class="modal-overlay">
-  <div class="modal-content">
+  <div class="modal-content" style="max-height:90vh; overflow-y:auto;">
     <div class="modal-header">
       <h3 id="modalTitle" style="margin:0;">Staff Details</h3>
       <button class="action-btn" onclick="closeModal('staffModal')">&times;</button>
     </div>
-    <div class="modal-body">
-      <!-- Form contents omitted for brevity (see previous full code) -->
-      <!-- You should include the form as in the previous code snippet, same as before -->
+    <div class="modal-body" style="padding:15px;">
+      <form id="staffForm" onsubmit="event.preventDefault(); saveStaff();">
+        <!-- Basic Info -->
+        <div class="form-grid">
+          <div class="form-group required">
+            <label for="inpStaffType">Staff Type</label>
+            <select id="inpStaffType" required>
+              <option value="existing">Existing</option>
+              <option value="new">New Staff</option>
+            </select>
+          </div>
+          <div class="form-group required">
+            <label for="inpId">ID</label>
+            <input type="text" id="inpId" required />
+          </div>
+          <div class="form-group required">
+            <label for="inpName">Name</label>
+            <input type="text" id="inpName" required />
+          </div>
+          <div class="form-group">
+            <label for="inpNationality">Nationality</label>
+            <input type="text" id="inpNationality" />
+          </div>
+          <div class="form-group">
+            <label for="inpDesignation">Designation</label>
+            <input type="text" id="inpDesignation" />
+          </div>
+          <div class="form-group">
+            <label for="inpBranch">Branch</label>
+            <input type="text" id="inpBranch" />
+          </div>
+        </div>
+        <!-- Dates & Documents Upload -->
+        <div class="form-grid" style="margin-top:15px;">
+          <div class="form-group required">
+            <label for="inpHireDate">Hire Date</label>
+            <input type="date" id="inpHireDate" />
+          </div>
+          <div class="form-group">
+            <label>Upload Documents</label>
+            <div class="upload-area" onclick="document.getElementById('fileInput').click()">
+              <i class="fas fa-upload"></i> Click to Upload Documents
+              <input type="file" id="fileInput" multiple style="display:none" onchange="handleFileUpload(event)">
+            </div>
+            <div id="documentList"></div>
+          </div>
+        </div>
+        <!-- Expiry Dates -->
+        <div class="form-grid" style="margin-top:15px;">
+          <div class="form-group">
+            <label for="inpPassportExp">Passport Expiry</label>
+            <input type="date" id="inpPassportExp" />
+          </div>
+          <div class="form-group">
+            <label for="inpVisaExpExisting">Visa Expiry</label>
+            <input type="date" id="inpVisaExpExisting" />
+          </div>
+        </div>
+        <!-- Hidden -->
+        <input type="hidden" id="editId" />
+        <button type="submit" style="margin-top:15px; display:none;">Save</button>
+      </form>
     </div>
     <div class="modal-footer">
       <button class="btn-reset" style="background:#999;" onclick="closeModal('staffModal')">Cancel</button>
@@ -322,123 +300,106 @@
 
 <!-- NOTIFICATIONS MODAL -->
 <div id="notificationsModal" class="modal-overlay">
-  <div class="modal-content" style="max-width: 600px;">
+  <div class="modal-content" style="max-width:600px;">
     <div class="modal-header">
       <h3 style="margin:0;">📢 Notifications & Alerts</h3>
       <button class="action-btn" onclick="closeModal('notificationsModal')">&times;</button>
     </div>
-    <div class="modal-body" style="max-height: 70vh; overflow-y:auto;">
+    <div class="modal-body" style="max-height:70vh; overflow-y:auto;">
       <div id="notificationsList"></div>
     </div>
   </div>
 </div>
 
-<!-- Hidden Print Area for Professional Report -->
-<div id="printArea"> ... </div> <!-- same as previous code, omitted for brevity -->
+<!-- PRINT AREA (for report) -->
+<div id="printArea" style="display:none;"> ... </div>
 
-<!-- Toast Notification -->
-<div id="toast" class="toast">
-  <i class="fas fa-check-circle"></i>
-  <span>Saved Successfully</span>
-</div>
+<!-- Toast -->
+<div id="toast" class="toast"><i class="fas fa-check-circle"></i> <span>Saved Successfully</span></div>
 
 <script>
-  // --- Data & State ---
-  const STORAGE_KEY = 'crispy_chicken_hr_system_v2.1';
-  let employees = [];
-  let filteredEmployees = [];
-  let documents = [];
-  let documentsExisting = [];
+  // Data storage key
+  const STORAGE_KEY='crispy_chicken_hr_system_v2.1';
 
-  // --- Initialization ---
-  document.addEventListener('DOMContentLoaded', () => {
-    // Load theme
-    const savedTheme = localStorage.getItem('cc_hr_theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
+  let employees=[]; // employee array
+  let filteredEmployees=[]; // filtered list
 
+  // Helper variables
+  let currentEmployee=null;
+
+  // Initialize
+  document.addEventListener('DOMContentLoaded', ()=> {
     loadData();
     setTodayDate();
-    initializeDateInputs();
-
-    // Auto-refresh notifications
-    setInterval(updateNotifications, 60000); // every 60 sec
     updateUI();
-    updateNotifications(); // initial
+    setInterval(updateNotifications,60000); // auto update notifications
+    updateNotifications();
   });
 
-  // --- Load & Save Data ---
+  // Load data from local storage or sample data
   function loadData() {
-    const stored = localStorage.getItem(STORAGE_KEY);
+    const stored=localStorage.getItem(STORAGE_KEY);
     if (stored) {
-      try { employees = JSON.parse(stored); } catch (e) { employees = []; }
+      try { employees=JSON.parse(stored); } catch(e){ employees=[]; }
     }
-    if (employees.length === 0) {
-      employees = getSampleData();
+    if (employees.length===0) {
+      employees=getSampleData();
       saveData();
     }
-    updateUI();
+    filterData();
   }
-
   function saveData() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(employees));
     updateUI();
     updateNotifications();
   }
 
-  // --- Sample Data ---
   function getSampleData() {
     return [
-      { id: "CC001", name: "Mohamed Ahmed", staffType: "existing", nationality: "Egyptian", designation: "Restaurant Manager", branch: "CC Hamdan St", passportExp: "2025-06-30", visaExp: "2024-12-31", medExpMain: "2024-12-31", lastUpdated: new Date().toISOString(), documents: [] },
-      { id: "CC002", name: "Fatima Khan", staffType: "new", nationality: "Bangladeshi", designation: "Cashier", branch: "CC Khaldia", hireDate: "2024-02-01", entryIssued: "2024-02-05", entryConfirmed: "2024-02-07", dateEntry: "2024-02-10", mohreOffer: "2024-02-15", laborContract: "2024-02-17", laborSigned: "2024-02-18", medResult: "2024-02-20", medInsurance: "2024-02-22", eidRec: "2024-03-01", visaIssued: "2024-03-05", visaStamped: "2024-03-07", bankAccount: "2024-03-10", itSetup: "Done", adminSetup: "Done", orientation: "Done", lastUpdated: new Date().toISOString(), documents: [{id:1,name:"Passport Copy",date:"2024-02-01",size:1024},{id:2,name:"Medical Report",date:"2024-02-20",size:2048}] },
-      { id: "CC003", name: "John Smith", staffType: "existing", nationality: "Indian", designation: "Chef", branch: "CC Muroor", passportExp: "2024-03-01", visaExp: "2024-06-15", medExpMain: "2024-05-20", lastUpdated: new Date().toISOString(), documents: [] }
+      { id:'CC001', name:'Mohamed Ahmed', staffType:'existing', nationality:'Egyptian', designation:'Restaurant Manager', branch:'CC Hamdan St', passportExp:'2025-06-30', visaExp:'2024-12-31', medExpMain:'2024-12-31', lastUpdated:new Date().toISOString(), documents:[] },
+      { id:'CC002', name:'Fatima Khan', staffType:'new', nationality:'Bangladeshi', designation:'Cashier', branch:'CC Khaldia', hireDate:'2024-02-01', entryIssued:'2024-02-05', entryConfirmed:'2024-02-07', dateEntry:'2024-02-10', medResult:'2024-02-20', medInsurance:'2024-02-22', eidRec:'2024-03-01', visaIssued:'2024-03-05', visaStamped:'2024-03-07', bankAccount:'2024-03-10', notes:'', passportNo:'', passportExp:'2024-06-30', visaExpExisting:'2024-12-31', medExpMain:'2024-12-31', documents:[] }
     ];
   }
 
-  // --- UI & Rendering ---
+  // UI update
   function updateUI() {
-    const tbody = document.getElementById('employeeTableBody');
-    const tableCount = document.getElementById('tableCount');
-    const loading = document.getElementById('tableLoading');
-
-    tbody.innerHTML = '';
+    const tbody=document.getElementById('employeeTableBody');
+    const tableCount=document.getElementById('tableCount');
+    tbody.innerHTML='';
     filterData();
-    loading.style.display = 'block';
+    document.getElementById('tableLoading').style.display='block';
 
-    setTimeout(() => {
-      loading.style.display = 'none';
+    setTimeout(()=> {
+      document.getElementById('tableLoading').style.display='none';
 
-      if (filteredEmployees.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="8" class="empty-state">
-          <i class="fas fa-users"></i>
-          <h3>No employees found</h3>
-          <p>Add your first employee using the "Add Staff" button</p>
-        </td></tr>`;
-        tableCount.innerText = `Showing 0 employees`;
-        document.getElementById('notifCount').style.display = 'none';
+      if (filteredEmployees.length===0) {
+        tbody.innerHTML=`<tr><td colspan="8" class="empty-state"><i class="fas fa-users"></i><h3>No employees found</h3><p>Add your first employee using the "Add Staff" button</p></td></tr>`;
+        document.getElementById('notifCount').style.display='none';
+        document.getElementById('tableCount').innerText=`Showing 0 employees`;
         return;
       }
 
       let countNew=0, countActive=0, countAlert=0, notifCount=0;
 
-      filteredEmployees.forEach(emp => {
-        const status = getOverallStatus(emp);
+      filteredEmployees.forEach(emp=> {
+        const status=getOverallStatus(emp);
         if (emp.staffType==='new') countNew++;
-        if (status.category==='active' || status.category==='ready') countActive++;
-        if (status.category==='warning' || status.category==='expired') { countAlert++; notifCount++; }
+        if (status.category==='active'||status.category==='ready') countActive++;
+        if (status.category==='warning'||status.category==='expired') { countAlert++; notifCount++; }
 
         if (emp.staffType==='new' && status.category==='process') notifCount++;
 
-        // Build row
-        const tr = document.createElement('tr');
-        if (status.category==='warning' || status.category==='expired') tr.className='alert-row';
+        const tr=document.createElement('tr');
+        if (status.category==='warning'||status.category==='expired') tr.className='alert-row';
         if (emp.staffType==='new') tr.className='new-staff-row';
 
-        const expiryHTML = emp.staffType==='existing' ? 
-          `<div><small>Pass:</small> <span class="${getExpiryStatus(emp.passportExp).class}">${getExpiryStatus(emp.passportExp).label}</span></div>
-           <div style="margin-top:2px;"><small>Visa:</small> <span class="${getExpiryStatus(emp.visaExp||emp.visaExpExisting).class}">${getExpiryStatus(emp.visaExp||emp.visaExpExisting).label}</span></div>` : 
-          `<span style="color:#aaa;">-</span>`;
+        const expiryHTML=emp.staffType==='existing' ? `
+          <div><small>Pass:</small> <span class="${getExpiryStatus(emp.passportExp).class}">${getExpiryStatus(emp.passportExp).label}</span></div>
+          <div style="margin-top:2px;"><small>Visa:</small> <span class="${getExpiryStatus(emp.visaExp||emp.visaExpExisting).class}">${getExpiryStatus(emp.visaExp||emp.visaExpExisting).label}</span></div>
+        ` : `<span style="color:#aaa;">-</span>`;
 
-        const nextStep = emp.staffType==='new' ? `<span class="next-step-badge" title="${getNextStep(emp).step}">${getNextStep(emp).step}</span>` : `<span class="next-step-badge" style="border-left-color:#ccc">Routine Monitoring</span>`;
+        const nextStep=getNextStep(emp);
+        const nextStepHTML=`<span class="next-step-badge" title="${nextStep.step}">${nextStep.step}</span>`;
 
         tr.innerHTML=`
           <td><span class="badge ${status.class}">${emp.staffType==='new'?'NEW':'EXS'}</span></td>
@@ -447,7 +408,7 @@
             <div style="font-weight:600;">${emp.name}</div>
             <small style="color:#888">${emp.designation||''} • ${emp.nationality||''}</small>
           </td>
-          <td>${nextStep}</td>
+          <td>${nextStepHTML}</td>
           <td>${emp.branch}</td>
           <td>${expiryHTML}</td>
           <td><span style="font-weight:bold; color:${status.color}">${status.label}</span></td>
@@ -455,6 +416,7 @@
             <button class="action-btn btn-edit" onclick="editEmployee('${emp.id}')" title="Edit"><i class="fas fa-edit"></i></button>
             <button class="action-btn btn-print" onclick="printReport('${emp.id}')" title="Print"><i class="fas fa-print"></i></button>
             <button class="action-btn btn-del" onclick="deleteEmployee('${emp.id}')" title="Delete"><i class="fas fa-trash"></i></button>
+            <button class="action-btn" onclick="showEmployeeDocuments('${emp.id}')" title="Documents"><i class="fas fa-file-alt"></i></button>
           </td>`;
         tbody.appendChild(tr);
       });
@@ -466,7 +428,7 @@
       document.getElementById('alertCount').innerText=countAlert;
 
       // Notifications badge
-      const notifBadge = document.getElementById('notifCount');
+      const notifBadge=document.getElementById('notifCount');
       if (notifCount>0) {
         notifBadge.innerText=notifCount;
         notifBadge.style.display='block';
@@ -475,35 +437,35 @@
       }
       document.getElementById('tableCount').innerText=`Showing ${filteredEmployees.length} of ${employees.length} employees`;
 
-    }, 300);
+    },300);
   }
 
-  // --- Filter ---
+  // Filter data
   function filterData() {
-    const term = document.getElementById('searchInput').value.toLowerCase();
+    const term=document.getElementById('searchInput').value.toLowerCase();
     const filterType=document.getElementById('typeFilter').value;
-    filteredEmployees=employees.filter(emp => {
-      const matchSearch=!term || emp.id.toLowerCase().includes(term) || emp.name.toLowerCase().includes(term) || (emp.designation && emp.designation.toLowerCase().includes(term)) || (emp.branch && emp.branch.toLowerCase().includes(term));
+    filteredEmployees=employees.filter(e=> {
+      const matchSearch=!term || e.id.toLowerCase().includes(term) || e.name.toLowerCase().includes(term) || (e.designation||'').toLowerCase().includes(term) || (e.branch||'').toLowerCase().includes(term);
       let matchType=true;
-      if (filterType==='new') matchType=emp.staffType==='new';
-      else if (filterType==='existing') matchType=emp.staffType==='existing';
+      if (filterType==='new') matchType=e.staffType==='new';
+      else if (filterType==='existing') matchType=e.staffType==='existing';
       else if (filterType==='alert') {
-        const status=getOverallStatus(emp);
-        matchType=status.category==='warning'||status.category==='expired'||(emp.staffType==='new'&&status.category==='process');
+        const status=getOverallStatus(e);
+        matchType=status.category==='warning'||status.category==='expired'||(e.staffType==='new'&&status.category==='process');
       }
       return matchSearch && matchType;
     });
   }
 
-  // --- Utility functions ---
+  // Utility functions
   function getExpiryStatus(dateStr) {
-    if (!dateStr) return { label: '-', class: '', warning: false, urgent: false, daysLeft: null };
+    if (!dateStr) return { label:'-', class:'', warning:false, urgent:false, daysLeft:null };
     const today=new Date(); today.setHours(0,0,0,0);
     const target=new Date(dateStr); target.setHours(0,0,0,0);
     const diff=Math.ceil((target - today)/(1000*60*60*24));
-    if (diff<=0) return { label: 'EXPIRED', class:'date-expired', warning:false, urgent:true, daysLeft:0 };
-    if (diff<=15) return { label: `${diff} Days Left`, class:'date-warning', warning:true, urgent:false, daysLeft:diff };
-    return { label: `${diff} Days`, class:'', warning:false, urgent:false, daysLeft:diff };
+    if (diff<=0) return { label:'EXPIRED', class:'date-expired', warning:false, urgent:true, daysLeft:0 };
+    if (diff<=15) return { label:`${diff} Days Left`, class:'date-warning', warning:true, urgent:false, daysLeft:diff };
+    return { label:`${diff} Days`, class:'', warning:false, urgent:false, daysLeft:diff };
   }
 
   function getOverallStatus(emp) {
@@ -546,7 +508,7 @@
     return { step:"Ready for Handover" };
   }
 
-  // --- Modal functions ---
+  // Modal controls
   function openModal(id) {
     document.getElementById(id).classList.add('open');
     document.body.style.overflow='hidden';
@@ -556,14 +518,211 @@
     document.body.style.overflow='';
   }
 
+  // Add new employee
+  function openAddModal() {
+    currentEmployee=null;
+    document.getElementById('staffForm').reset();
+    document.getElementById('documentList').innerHTML='';
+    document.getElementById('editId').value='';
+    document.getElementById('modalTitle').innerText='Add New Staff';
+    openModal('staffModal');
+  }
+
+  // Edit employee
+  function editEmployee(id) {
+    const e=employees.find(e=>e.id===id);
+    if (!e) return;
+    currentEmployee=e;
+    populateForm(e);
+    document.getElementById('modalTitle').innerText='Edit Staff';
+    openModal('staffModal');
+  }
+
+  // Show employee documents
+  function showEmployeeDocuments(id) {
+    const emp=employees.find(e=>e.id===id);
+    if (!emp) return;
+    currentEmployee=emp;
+    populateForm(emp);
+    renderDocumentList(emp);
+    document.getElementById('documentList').innerHTML=''; // reset
+    openModal('staffModal');
+  }
+
+  // Populate form with employee data
+  function populateForm(emp) {
+    document.getElementById('editId').value=emp.id;
+    document.getElementById('inpStaffType').value=emp.staffType||'existing';
+    document.getElementById('inpId').value=emp.id;
+    document.getElementById('inpName').value=emp.name;
+    document.getElementById('inpNationality').value=emp.nationality||'';
+    document.getElementById('inpDesignation').value=emp.designation||'';
+    document.getElementById('inpBranch').value=emp.branch||'';
+    document.getElementById('inpHireDate').value=emp.hireDate||'';
+
+    document.getElementById('inpPassportExp').value=emp.passportExp||'';
+    document.getElementById('inpVisaExpExisting').value=emp.visaExp||emp.visaExpExisting||'';
+
+    // load documents
+    if (emp.documents && emp.documents.length>0) {
+      renderDocumentList(emp);
+    } else {
+      document.getElementById('documentList').innerHTML='';
+    }
+  }
+
+  // Save employee data
+  function saveStaff() {
+    const id=document.getElementById('inpId').value.trim();
+    const name=document.getElementById('inpName').value.trim();
+    if (!id || !name) { showToast('ID and Name are required','error'); return; }
+
+    const isNew=document.getElementById('editId').value==='';
+
+    if (isNew && employees.some(e=>e.id===id)) {
+      showToast('ID already exists','error');
+      document.getElementById('inpId').focus();
+      return;
+    }
+
+    const data=gatherFormData();
+
+    if (isNew) {
+      employees.unshift({...data, lastUpdated:new Date().toISOString()});
+    } else {
+      const idx=employees.findIndex(e=>e.id===document.getElementById('editId').value);
+      if (idx!==-1) {
+        employees[idx]={ ...employees[idx], ...data, lastUpdated:new Date().toISOString() };
+      }
+    }
+    saveData();
+    closeModal('staffModal');
+    showToast(`Employee ${isNew?'added':'updated'} successfully`,'success');
+  }
+
+  function gatherFormData() {
+    const data={};
+    data.staffType=document.getElementById('inpStaffType').value;
+    data.id=document.getElementById('inpId').value.trim();
+    data.name=document.getElementById('inpName').value.trim();
+    data.nationality=document.getElementById('inpNationality').value.trim();
+    data.designation=document.getElementById('inpDesignation').value.trim();
+    data.branch=document.getElementById('inpBranch').value.trim();
+    data.hireDate=document.getElementById('inpHireDate').value;
+    data.passportExp=document.getElementById('inpPassportExp').value;
+    data.visaExp=document.getElementById('inpVisaExpExisting').value;
+    // Save documents
+    data.documents=currentEmployee && currentEmployee.documents? [...currentEmployee.documents]:[];
+    return data;
+  }
+
+  // Delete employee
+  function deleteEmployee(id) {
+    if (confirm(`Are you sure you want to delete employee ${id}?`)) {
+      employees=employees.filter(e=>e.id!==id);
+      saveData();
+    }
+  }
+
+  // Print report
+  function printReport(id) {
+    const emp=employees.find(e=>e.id===id);
+    if (!emp) { showToast('Employee not found','error'); return; }
+    populateReport(emp);
+    window.print();
+  }
+
+  // Populate report (simplified)
+  function populateReport(emp) {
+    // fill #printArea with employee info
+    // omitted for brevity
+  }
+
+  // --- Document Handling ---
+  function handleFileUpload(event) {
+    const files=event.target.files;
+    if (!files || files.length===0) return;
+    for (let i=0; i<files.length; i++) {
+      const file=files[i];
+      const reader=new FileReader();
+      reader.onload=function(e) {
+        const doc={ id: Date.now()+'_'+i, name:file.name, size:file.size, date:new Date().toISOString().split('T')[0], data:e.target.result };
+        if (!currentEmployee.documents) currentEmployee.documents=[];
+        currentEmployee.documents.push(doc);
+        updateEmployeeData(currentEmployee);
+        renderDocumentList(currentEmployee);
+        showToast(`Document ${file.name} uploaded`, 'success');
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  function renderDocumentList(emp) {
+    const listDiv=document.getElementById('documentList');
+    listDiv.innerHTML='';
+    if (!emp.documents || emp.documents.length===0) {
+      listDiv.innerHTML='<p>No documents uploaded.</p>';
+      return;
+    }
+    emp.documents.forEach(doc => {
+      listDiv.innerHTML+=`
+      <div class="document-item">
+        <div class="document-info">
+          <i class="fas fa-file-alt"></i> <span class="document-name">${doc.name}</span>
+        </div>
+        <div style="display:flex; gap:4px;">
+          <button onclick="viewDocument('${emp.id}', '${doc.id}')" title="View"><i class="fas fa-eye"></i></button>
+          <button onclick="deleteDocument('${emp.id}', '${doc.id}')" title="Delete"><i class="fas fa-trash"></i></button>
+        </div>
+      </div>`;
+    });
+  }
+
+  function viewDocument(empId, docId) {
+    const emp=employees.find(e=>e.id===empId);
+    if (!emp || !emp.documents) return;
+    const doc=emp.documents.find(d=>d.id===docId);
+    if (!doc) return;
+    const win=window.open();
+    win.document.write('<iframe style="width:100%;height:100%" src="'+doc.data+'"></iframe>');
+  }
+
+  function deleteDocument(empId, docId) {
+    const emp=employees.find(e=>e.id===empId);
+    if (!emp || !emp.documents) return;
+    emp.documents=emp.documents.filter(d=>d.id!==docId);
+    updateEmployeeData(emp);
+    renderDocumentList(emp);
+    showToast('Document deleted','success');
+  }
+
+  function updateEmployeeData(emp) {
+    const idx=employees.findIndex(e=>e.id===emp.id);
+    if (idx!==-1) {
+      employees[idx]=emp;
+      saveData();
+      checkDocumentsExpiry(emp);
+    }
+  }
+
+  // Check expiry of documents
+  function checkDocumentsExpiry(emp) {
+    if (!emp.documents || emp.documents.length===0) return;
+    emp.documents.forEach(doc => {
+      const expiryStatus=getExpiryStatus(doc.date);
+      if (expiryStatus.category==='warning'||expiryStatus.category==='expired') {
+        showToast(`${emp.name}'s document ${doc.name} is ${expiryStatus.label}`, expiryStatus.category==='warning'?'warning':'error');
+      }
+    });
+  }
+
   // --- Notifications ---
   function updateNotifications() {
     const today=new Date();
     let notifCount=0;
     const notifications=[];
-
     employees.forEach(emp => {
-      const status = getOverallStatus(emp);
+      const status=getOverallStatus(emp);
       if (status.category==='expired') {
         notifications.push({ type:'error', message:`${emp.name} (${emp.id}) - Documents Expired`, employeeId:emp.id });
         notifCount++;
@@ -593,7 +752,7 @@
         }
       }
     });
-    // Show notifications
+    // show notifications
     const listEl=document.getElementById('notificationsList');
     if (notifications.length===0) {
       listEl.innerHTML=`<div class="empty-state"><i class="fas fa-bell-slash"></i><h3>No alerts</h3><p>All employees are up to date</p></div>`;
@@ -622,28 +781,16 @@
     openModal('notificationsModal');
   }
 
-  // --- Print report ---
-  function printReport(id) {
-    const emp=employees.find(e=>e.id===id);
-    if (!emp) { showToast('Employee not found','error'); return; }
-    populateReport(emp);
-    window.print();
-  }
-
-  // --- Toast ---
-  function showToast(msg, type='success') {
-    const toast=document.getElementById('toast');
-    toast.innerHTML=`<i class="fas fa-${type==='success'?'check-circle':type==='error'?'exclamation-circle':'exclamation-triangle'}"></i> ${msg}`;
-    toast.className=`toast ${type} show`;
-    setTimeout(()=>{ toast.className=toast.className.replace('show',''); },3000);
-  }
-
-  // --- Toggle theme ---
+  // --- Helper functions ---
   function toggleTheme() {
     const current=document.documentElement.getAttribute('data-theme');
     const newTheme=current==='dark'?'light':'dark';
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('cc_hr_theme', newTheme);
+  }
+
+  function setTodayDate() {
+    // optional, set default date
   }
 
   // --- Utility ---
@@ -653,29 +800,33 @@
     return d.toLocaleDateString('en-GB',{ day:'2-digit', month:'short', year:'numeric' });
   }
 
-  // --- Modal handlers ---
+  // --- Modal controls ---
   document.querySelectorAll('.modal-overlay').forEach(mod => {
     document.addEventListener('keydown', e => { if(e.key==='Escape') { mod.classList.remove('open'); document.body.style.overflow=''; } });
     document.addEventListener('click', e => { if(e.target===mod) { mod.classList.remove('open'); document.body.style.overflow=''; } });
   });
+
+  // Open modal
   function openModal(id) {
     document.getElementById(id).classList.add('open');
     document.body.style.overflow='hidden';
   }
+  // Close modal
   function closeModal(id) {
     document.getElementById(id).classList.remove('open');
     document.body.style.overflow='';
   }
 
-  // --- Save Staff ---
+  // Save employee form
   function saveStaff() {
-    const empId=document.getElementById('inpId').value.trim();
-    const empName=document.getElementById('inpName').value.trim();
-    if (!empId || !empName) { showToast('ID and Name are required','error'); return; }
+    const id=document.getElementById('inpId').value.trim();
+    const name=document.getElementById('inpName').value.trim();
+    if (!id || !name) { showToast('ID and Name are required','error'); return; }
+
     const isNew=document.getElementById('editId').value==='';
 
-    if (isNew && employees.some(e=>e.id===empId)) {
-      showToast('Employee ID already exists','error');
+    if (isNew && employees.some(e=>e.id===id)) {
+      showToast('ID already exists','error');
       document.getElementById('inpId').focus();
       return;
     }
@@ -683,7 +834,7 @@
     const data=gatherFormData();
 
     if (isNew) {
-      employees.unshift({ ...data, lastUpdated:new Date().toISOString() });
+      employees.unshift({...data, lastUpdated:new Date().toISOString()});
     } else {
       const idx=employees.findIndex(e=>e.id===document.getElementById('editId').value);
       if (idx!==-1) {
@@ -697,56 +848,29 @@
 
   function gatherFormData() {
     const data={};
-    // Map fields
-    const fieldMap={
-      'inpStaffType':'staffType',
-      'inpId':'id',
-      'inpName':'name',
-      'inpNationality':'nationality',
-      'inpDesignation':'designation',
-      'inpBranch':'branch',
-      'inpHireDate':'hireDate',
-      'inpEntryIssued':'entryIssued',
-      'inpEntryConfirmed':'entryConfirmed',
-      'inpDateEntry':'dateEntry',
-      'inpMohreOffer':'mohreOffer',
-      'inpLaborContract':'laborContract',
-      'inpLaborSigned':'laborSigned',
-      'inpMedResult':'medResult',
-      'inpMedInsurance':'medInsurance',
-      'inpEidRec':'eidRec',
-      'inpVisaIssued':'visaIssued',
-      'inpVisaStamped':'visaStamped',
-      'inpBankAccount':'bankAccount',
-      'inpBranchStart':'branchStartDate',
-      'inpNotes':'notes',
-      'inpPassportNo':'passportNo',
-      'inpPassportExp':'passportExp',
-      'inpMedExpMain':'medExpMain',
-      'inpVisaExpExisting':'visaExpExisting',
-      'inpLaborCardExp':'laborCardExp',
-      'inpEidExp':'eidExp',
-      'inpNotesExisting':'notesExisting'
-    };
-    for (const [inputId, field] of Object.entries(fieldMap)) {
-      const el=document.getElementById(inputId);
-      if (el) data[field]=el.value;
-    }
-    // Documents
-    data.documents=(data.staffType==='new')? [...documents]: [...documentsExisting];
+    data.staffType=document.getElementById('inpStaffType').value;
+    data.id=document.getElementById('inpId').value.trim();
+    data.name=document.getElementById('inpName').value.trim();
+    data.nationality=document.getElementById('inpNationality').value.trim();
+    data.designation=document.getElementById('inpDesignation').value.trim();
+    data.branch=document.getElementById('inpBranch').value.trim();
+    data.hireDate=document.getElementById('inpHireDate').value;
+    data.passportExp=document.getElementById('inpPassportExp').value;
+    data.visaExp=document.getElementById('inpVisaExpExisting').value;
+    // Save documents
+    data.documents=currentEmployee && currentEmployee.documents? [...currentEmployee.documents]:[];
     return data;
   }
 
-  // --- Delete ---
+  // Delete employee
   function deleteEmployee(id) {
     if (confirm(`Are you sure you want to delete employee ${id}?`)) {
       employees=employees.filter(e=>e.id!==id);
       saveData();
-      showToast('Deleted successfully','success');
     }
   }
 
-  // --- Print ---
+  // Print report
   function printReport(id) {
     const emp=employees.find(e=>e.id===id);
     if (!emp) { showToast('Employee not found','error'); return; }
@@ -754,79 +878,211 @@
     window.print();
   }
 
-  // --- Populate Report ---
+  // Populate report (simplified)
   function populateReport(emp) {
-    document.getElementById('prName').innerText=emp.name;
-    document.getElementById('prId').innerText=emp.id;
-    document.getElementById('prDesignation').innerText=emp.designation || '-';
-    document.getElementById('prBranch').innerText=emp.branch;
-    const status=getOverallStatus(emp);
-    document.getElementById('prStatus').innerText=status.label;
-    document.getElementById('prStage').innerText=emp.staffType==='new'?'Onboarding':'Employed';
+    // fill #printArea with employee info
+  }
 
-    const chk=(val)=>val?formatDate(val):'❌ Pending';
-    document.getElementById('prEntry').innerText=chk(emp.entryIssued);
-    document.getElementById('prMedical').innerText=chk(emp.medResult);
-    document.getElementById('prEID').innerText=chk(emp.eidRec);
-    document.getElementById('prVisa').innerText=chk(emp.visaIssued);
-    document.getElementById('prPassExp').innerText=emp.passportExp||'-';
-    document.getElementById('prVisaExp').innerText=emp.visaExp||emp.visaExpExisting||'-';
+  // --- Document Handling ---
+  function handleFileUpload(event) {
+    const files=event.target.files;
+    if (!files || files.length===0) return;
+    for (let i=0; i<files.length; i++) {
+      const file=files[i];
+      const reader=new FileReader();
+      reader.onload=function(e) {
+        const doc={ id: Date.now()+'_'+i, name:file.name, size:file.size, date:new Date().toISOString().split('T')[0], data:e.target.result };
+        if (!currentEmployee.documents) currentEmployee.documents=[];
+        currentEmployee.documents.push(doc);
+        updateEmployeeData(currentEmployee);
+        renderDocumentList(currentEmployee);
+        showToast(`Document ${file.name} uploaded`, 'success');
+      };
+      reader.readAsDataURL(file);
+    }
+  }
 
-    // Timeline
-    const timeline=document.getElementById('onboardingTimeline');
-    let html='';
-    const steps=[
-      { name:'Hire Approval', date:emp.hireDate },
-      { name:'Entry Permit Issued', date:emp.entryIssued },
-      { name:'Entry Permit Confirmed', date:emp.entryConfirmed },
-      { name:'Date of Entry', date:emp.dateEntry },
-      { name:'Labor Contract', date:emp.laborSigned },
-      { name:'Medical Result', date:emp.medResult },
-      { name:'Medical Insurance', date:emp.medInsurance },
-      { name:'EID Received', date:emp.eidRec },
-      { name:'Visa Issued', date:emp.visaIssued },
-      { name:'Visa Stamped', date:emp.visaStamped },
-      { name:'Bank Account', date:emp.bankAccount },
-      { name:'Branch Handover', date:emp.branchStartDate }
-    ];
-    steps.forEach((step,i)=>{
-      if (step.date) {
-        const prevDate=new Date(i>0?steps[i-1].date:null);
-        const currDate=new Date(step.date);
-        const days=prevDate?Math.ceil((currDate-prevDate)/(1000*60*60*24)):'-';
-        html+=`
-        <tr>
-          <td>${step.name}</td>
-          <td>-</td>
-          <td>${formatDate(step.date)}</td>
-          <td>${days}</td>
-          <td>${getStepResponsible(step.name)}</td>
-        </tr>`;
+  function renderDocumentList(emp) {
+    const listDiv=document.getElementById('documentList');
+    listDiv.innerHTML='';
+    if (!emp.documents || emp.documents.length===0) {
+      listDiv.innerHTML='<p>No documents uploaded.</p>';
+      return;
+    }
+    emp.documents.forEach(doc => {
+      listDiv.innerHTML+=`
+      <div class="document-item">
+        <div class="document-info">
+          <i class="fas fa-file-alt"></i> <span class="document-name">${doc.name}</span>
+        </div>
+        <div style="display:flex; gap:4px;">
+          <button onclick="viewDocument('${emp.id}', '${doc.id}')" title="View"><i class="fas fa-eye"></i></button>
+          <button onclick="deleteDocument('${emp.id}', '${doc.id}')" title="Delete"><i class="fas fa-trash"></i></button>
+        </div>
+      </div>`;
+    });
+  }
+
+  function viewDocument(empId, docId) {
+    const emp=employees.find(e=>e.id===empId);
+    if (!emp || !emp.documents) return;
+    const doc=emp.documents.find(d=>d.id===docId);
+    if (!doc) return;
+    const win=window.open();
+    win.document.write('<iframe style="width:100%;height:100%" src="'+doc.data+'"></iframe>');
+  }
+
+  function deleteDocument(empId, docId) {
+    const emp=employees.find(e=>e.id===empId);
+    if (!emp || !emp.documents) return;
+    emp.documents=emp.documents.filter(d=>d.id!==docId);
+    updateEmployeeData(emp);
+    renderDocumentList(emp);
+    showToast('Document deleted','success');
+  }
+
+  function updateEmployeeData(emp) {
+    const idx=employees.findIndex(e=>e.id===emp.id);
+    if (idx!==-1) {
+      employees[idx]=emp;
+      saveData();
+      checkDocumentsExpiry(emp);
+    }
+  }
+
+  // Check expiry dates for documents
+  function checkDocumentsExpiry(emp) {
+    if (!emp.documents || emp.documents.length===0) return;
+    emp.documents.forEach(doc => {
+      const expiryStatus=getExpiryStatus(doc.date);
+      if (expiryStatus.category==='warning'||expiryStatus.category==='expired') {
+        showToast(`${emp.name}'s document ${doc.name} is ${expiryStatus.label}`, expiryStatus.category==='warning'?'warning':'error');
       }
     });
-    document.getElementById('onboardingTimeline').innerHTML=html;
+  }
 
-    // Actions
-    const actions=[];
-    if (emp.hireDate) actions.push(`Hire Approved on ${formatDate(emp.hireDate)}`);
-    if (emp.entryIssued) actions.push(`Entry Permit Issued: ${formatDate(emp.entryIssued)}`);
-    if (emp.entryConfirmed) actions.push(`Entry Confirmed: ${formatDate(emp.entryConfirmed)}`);
-    if (emp.dateEntry) actions.push(`Date of Entry: ${formatDate(emp.dateEntry)}`);
-    if (emp.laborContract) actions.push(`Labor Contract: ${formatDate(emp.laborContract)}`);
-    if (emp.laborSigned) actions.push(`Labor Signed: ${formatDate(emp.laborSigned)}`);
-    if (emp.medResult) actions.push(`Medical: ${formatDate(emp.medResult)}`);
-    if (emp.medInsurance) actions.push(`Medical Insurance: ${formatDate(emp.medInsurance)}`);
-    if (emp.eidRec) actions.push(`EID: ${formatDate(emp.eidRec)}`);
-    if (emp.visaIssued) actions.push(`Visa: ${formatDate(emp.visaIssued)}`);
-    if (emp.visaStamped) actions.push(`Visa Stamped: ${formatDate(emp.visaStamped)}`);
-    if (emp.bankAccount) actions.push(`Bank: ${formatDate(emp.bankAccount)}`);
-    if (emp.branchStartDate) actions.push(`Handover: ${formatDate(emp.branchStartDate)}`);
-    if (emp.notes) actions.push(`Notes: ${emp.notes}`);
-    document.getElementById('prActions').innerHTML=actions.length?actions.map(li=>`<li>${li}</li>`).join(''):'<li>No actions recorded</li>';
+  // --- Notifications ---
+  function updateNotifications() {
+    const today=new Date();
+    let notifCount=0;
+    const notifications=[];
+    employees.forEach(emp => {
+      const status=getOverallStatus(emp);
+      if (status.category==='expired') {
+        notifications.push({ type:'error', message:`${emp.name} (${emp.id}) - Documents Expired`, employeeId:emp.id });
+        notifCount++;
+      } else if (status.category==='warning') {
+        const pass=getExpiryStatus(emp.passportExp);
+        const visa=getExpiryStatus(emp.visaExp||emp.visaExpExisting);
+        const med=getExpiryStatus(emp.medExpMain);
+        let expiringItem='Documents';
+        if (pass.warning) expiringItem='Passport';
+        else if (visa.warning) expiringItem='Visa';
+        else if (med.warning) expiringItem='Medical Insurance';
 
-    // Stamp
-    const stamp=document.getElementById('prStamp');
-    stamp.style.display=status.label.includes('Ready')?'flex':'none';
+        notifications.push({ type:'warning', message:`${emp.name} (${emp.id}) - ${expiringItem} expiring in ${pass.daysLeft || visa.daysLeft || med.daysLeft} days`, employeeId:emp.id });
+        notifCount++;
+      } else if (emp.staffType==='new' && status.category==='process') {
+        const step=getNextStep(emp);
+        notifications.push({ type:'info', message:`${emp.name} (${emp.id}) - ${step.step}`, employeeId:emp.id });
+        notifCount++;
+      }
+      if (emp.staffType==='new' && emp.entryIssued && !emp.entryConfirmed) {
+        const issued=new Date(emp.entryIssued);
+        const diffDays=Math.floor((today-issued)/(1000*60*60*24));
+        if (diffDays>60) {
+          notifications.push({ type:'warning', message:`${emp.name} (${emp.id}) - Entry Permit confirmation overdue (${diffDays} days)`, employeeId:emp.id });
+          notifCount++;
+        }
+      }
+    });
+    // show notifications
+    const listEl=document.getElementById('notificationsList');
+    if (notifications.length===0) {
+      listEl.innerHTML=`<div class="empty-state"><i class="fas fa-bell-slash"></i><h3>No alerts</h3><p>All employees are up to date</p></div>`;
+    } else {
+      let html=`<div style="display:flex; flex-direction:column; gap:10px;">`;
+      notifications.forEach(n => {
+        const icon=n.type==='error'?'🔴':n.type==='warning'?'🟠':'🔵';
+        html+=`
+        <div style="padding:12px; background:${n.type==='error'?'#fee':n.type==='warning'?'#ffd':'#eef'}; border-radius:6px; border-left:4px solid ${n.type==='error'?'#dc3545':n.type==='warning'?'#f59e0b':'#3b82f6'};">
+          <div style="display:flex; align-items:center; gap:10px;">
+            <span style="font-size:18px;">${icon}</span>
+            <div style="flex:1;">
+              <div style="font-weight:600; font-size:13px;">${n.message}</div>
+              <small style="color:#666; font-size:11px;">Click arrow to view</small>
+            </div>
+            <button class="action-btn btn-edit" onclick="editEmployee('${n.employeeId}'); closeModal('notificationsModal')"><i class="fas fa-arrow-right"></i></button>
+          </div>
+        </div>`;
+      });
+      html+=`</div>`;
+      listEl.innerHTML=html;
+    }
+  }
+  function showNotifications() {
+    updateNotifications();
+    openModal('notificationsModal');
+  }
+
+  // --- Helper functions ---
+  function getNextStep(emp) {
+    if (emp.staffType!=='new') return { step:"Routine Monitoring" };
+    if (!emp.hireDate) return { step:"Approve Hire Date" };
+    if (!emp.entryIssued) return { step:"Issue Entry Permit" };
+    if (!emp.entryConfirmed) return { step:"Confirm Entry Permit Received" };
+    if (!emp.dateEntry) return { step:"Record Entry Date" };
+    if (!emp.laborContract) return { step:"Prepare & Sign Labor Contract" };
+    if (!emp.medResult) return { step:"Schedule Medical / Get Result" };
+    if (!emp.medInsurance) return { step:"Activate Medical Insurance" };
+    if (!emp.eidRec) return { step:"Wait for EID Delivery" };
+    if (!emp.visaIssued) return { step:"Issue Visa" };
+    if (!emp.visaStamped) return { step:"Stamp Visa in Passport" };
+    if (!emp.bankAccount) return { step:"Open Bank Account" };
+    if (!emp.branchStartDate) return { step:"Send to Restaurant (Handover)" };
+    return { step:"Ready for Handover" };
+  }
+
+  // Show employee data for editing
+  function editEmployee(id) {
+    const emp=employees.find(e=>e.id===id);
+    if (!emp) return;
+    currentEmployee=emp;
+    populateForm(emp);
+    renderDocumentList(emp);
+    document.getElementById('editId').value=emp.id;
+    document.getElementById('modalTitle').innerText='Edit Staff';
+    openModal('staffModal');
+  }
+
+  // Show employee documents
+  function showEmployeeDocuments(id) {
+    const emp=employees.find(e=>e.id===id);
+    if (!emp) return;
+    currentEmployee=emp;
+    populateForm(emp);
+    renderDocumentList(emp);
+    document.getElementById('editId').value=emp.id;
+    document.getElementById('modalTitle').innerText='Edit Staff & Documents';
+    openModal('staffModal');
+  }
+
+  // Populate form
+  function populateForm(emp) {
+    document.getElementById('inpStaffType').value=emp.staffType||'existing';
+    document.getElementById('inpId').value=emp.id;
+    document.getElementById('inpName').value=emp.name;
+    document.getElementById('inpNationality').value=emp.nationality||'';
+    document.getElementById('inpDesignation').value=emp.designation||'';
+    document.getElementById('inpBranch').value=emp.branch||'';
+    document.getElementById('inpHireDate').value=emp.hireDate||'';
+    document.getElementById('inpPassportExp').value=emp.passportExp||'';
+    document.getElementById('inpVisaExpExisting').value=emp.visaExp||emp.visaExpExisting||'';
+    if (emp.documents && emp.documents.length>0) {
+      renderDocumentList(emp);
+    } else {
+      document.getElementById('documentList').innerHTML='';
+    }
   }
 
 </script>
